@@ -21,6 +21,7 @@
                                 style="border-top: none; border-bottom: none;">
                                 <thead>
                                     <tr>
+                                        <th>SL No</th>
                                         <th>Company Name</th>
                                         <th>Email</th>
                                         <th>Logo</th>
@@ -31,6 +32,7 @@
                                 <tbody>
                                     @forelse ($companies as $company)
                                         <tr>
+                                            <td>{{ $loop->index+1 }}</td>
                                             <td>{{ Str::title($company->company_name) }}</td>
                                             <td>{{ $company->company_email }}</td>
                                             <td><img src="{{ asset('uploads/company_logo') }}/{{ $company->company_logo }}"
@@ -55,11 +57,16 @@
                                     @endforelse
                                 </tbody>
                             </table>
-
+                            <div class="m-auto mt-3">
+                                @if (count($companies))
+                                    {{ $companies->links('pagination::bootstrap-5') }}
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
