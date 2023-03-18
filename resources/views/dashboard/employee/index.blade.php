@@ -4,7 +4,7 @@
 <div class="page-titles">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('company.index') }}">Compaines</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('employee.index') }}">Compaines</a></li>
     </ol>
 </div>
 <!-- row -->
@@ -21,26 +21,24 @@
                         <thead>
                             <tr>
                                 <th>SL No</th>
-                                <th>Company Name</th>
+                                <th>Employee Name</th>
+                                <th>Company</th>
                                 <th>Email</th>
-                                <th>Logo</th>
-                                <th>Websites</th>
+                                <th>Phone No</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($companies as $company)
+                            @forelse ($employees as $employee)
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ Str::title($company->company_name) }}</td>
-                                    <td>{{ $company->company_email }}</td>
-                                    <td><img src="{{ asset('uploads/company_logo') }}/{{ $company->company_logo }}"
-                                            alt=""></td>
-                                    <td><a class="btn-sm bg-info text-light"
-                                            href="{{ $company->website_link }}" target="_blank">Website</a></td>
+                                    <td>{{ Str::title($employee->employee_name) }}</td>
+                                    <td>{{ Str::title($employee->relationshipwithcompany->company_name) }}</td>
+                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->phone_no }}</td>
                                     <td>
-                                        <a href="{{ route('company.edit', $company->id) }}" class="btn btn-sm text-light bg-warning">Edit</a>
-                                        <form action="{{ route('company.destroy', $company->id) }}" method="POST">
+                                        <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-sm text-light bg-warning">Edit</a>
+                                        <form action="{{ route('employee.destroy', $employee->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
@@ -59,8 +57,8 @@
 
                     {{-- for pagination --}}
                     <div class="m-auto mt-3">
-                        @if (count($companies))
-                            {{ $companies->links('pagination::bootstrap-5') }}
+                        @if (count($employees))
+                            {{ $employees->links('pagination::bootstrap-5') }}
                         @endif
                     </div>
                 </div>
@@ -68,5 +66,5 @@
         </div>
     </div>
 </div>
-
 @endsection
+

@@ -782,6 +782,15 @@
 							<li><a href="{{ route('company.create') }}">Add Compaines</a></li>
 						</ul>
                     </li>
+                    <li><a class="has-arrow ai-icon" href="{{ route('employee.index') }}" aria-expanded="false">
+                        <i class="fa fa-user-circle"></i>
+							<span class="nav-text">Employees</span>
+						</a>
+                        <ul aria-expanded="false">
+							<li><a href="{{ route('employee.index') }}">All Employees</a></li>
+							<li><a href="{{ route('employee.create') }}">Add Employee</a></li>
+						</ul>
+                    </li>
                 </ul>
 				{{-- <div class="add-menu-sidebar">
 					<img src="{{ asset('dashboard_assets') }}/assets/images/calendar.png" alt="" class="mr-3">

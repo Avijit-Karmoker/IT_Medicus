@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,6 @@ require __DIR__.'/auth.php';
 
 //Companies controller
 Route::resource('/company', CompaniesController::class);
+
+//Employees controller
+Route::resource('/employee', EmployeeController::class);
